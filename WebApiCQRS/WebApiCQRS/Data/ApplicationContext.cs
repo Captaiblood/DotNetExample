@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApiCQRS.Data.EntitiesConfigration;
 using WebApiCQRS.Models;
 
 namespace WebApiCQRS.Data
@@ -10,6 +11,16 @@ namespace WebApiCQRS.Data
         {
 
         }
+
+
+        // Specify DbSet properties etc
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // add your own configuration here
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+        }
+       
+      
 
         public DbSet<Product> Products { get; set; }
 
